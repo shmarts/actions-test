@@ -1,2 +1,3 @@
 feature 1 + fix
 feature 2
+feature 3
