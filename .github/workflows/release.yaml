@@ -17,9 +17,7 @@ jobs:
           mode: "COMMIT"
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}} asd
-              
-              asd",
+              "template": "#{{CHANGELOG}} asd",
               "categories": [
                 {
                     "title": "## Feature",
