@@ -2,21 +2,33 @@ name: Create release
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Tag semver (e.g., 0.1.0)'
+        required: true
 
 jobs:
   release:
-    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Create and Push Git Tag
+        run: |
+          git fetch origin
+          git tag ${{ github.event.inputs.version }}
+          git push origin ${{ github.event.inputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build Changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
-          mode: "COMMIT"
+          mode: "HYBRID"
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}} asd
-              
-              asd",
+              "template": "#{{CHANGELOG}} asd",
               "categories": [
                 {
                     "title": "## Feature",
