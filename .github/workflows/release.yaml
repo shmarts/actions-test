@@ -11,10 +11,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Create and Push Git Tag
+      - name: Create and push tag
         run: |
           git fetch origin
           git tag ${{ github.event.inputs.version }}
@@ -22,8 +22,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set github.ref
-        run: echo "::set-env name=GITHUB_REF::refs/tags/${{ github.event.inputs.version }}"
+      - name: Checkout created tag
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.version }}
 
       - name: Build Changelog
         uses: mikepenz/release-changelog-builder-action@v5
