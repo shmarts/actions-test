@@ -25,7 +25,7 @@ jobs:
       - name: Build Changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
-          mode: "HYBRID"
+          mode: "COMMIT"
           configurationJson: |
             {
               "template": "#{{CHANGELOG}} asd",
