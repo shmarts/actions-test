@@ -26,7 +26,7 @@ jobs:
         id: changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
-          mode: "HYBRID"
+          mode: "PR"
           configurationJson: |
             {
               "template": "#{{CHANGELOG}}",
