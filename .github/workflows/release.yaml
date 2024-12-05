@@ -22,6 +22,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set github.ref
+        run: echo "::set-env name=GITHUB_REF::refs/tags/${{ github.event.inputs.version }}"
+
       - name: Build Changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
