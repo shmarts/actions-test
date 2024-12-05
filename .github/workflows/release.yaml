@@ -50,15 +50,24 @@ jobs:
                   "target": "$1"
                 }
               ],
-              "pr_template": "- #{{TITLE}} - #{{URL}} #{{TICKET}}",
+              "pr_template": "- #{{CLEAN_TITLE}} - #{{URL}} #{{TICKET}}",
               "custom_placeholders": [
+                {
+                  "name": "CLEAN_TITLE",
+                  "source": "TITLE",
+                  "transformer": {
+                    "pattern": "\\s*\\[?FRVR-[A-Za-z0-9]+\\]?\\s*",
+                    "method": "regexr",
+                    "target": ""
+                  }
+                },
                 {
                   "name": "TICKET",
                   "source": "TITLE",
                   "transformer": {
-                    "pattern": "\\[FRVR-([A-Za-z0-9]+)\\]",
+                    "pattern": "\\[?FRVR-([A-Za-z0-9]+)\\]?",
                     "method": "regexr",
-                    "target": "- ([Linear FRVR-$1](https://linear.app/frvr/issue/FRVR-$1))"
+                    "target": "- [FRVR-$1](https://linear.app/frvr/issue/FRVR-$1)"
                   }
                 }
               ]
