@@ -50,7 +50,6 @@ jobs:
                   "target": "$1"
                 }
               ],
-              "pr_template": "- #{{TITLE}}\n   - PR: ##{{NUMBER}}",
               "pr_template": "- #{{TITLE}} - #{{URL}} #{{TICKET}}",
               "custom_placeholders": [
                 {
