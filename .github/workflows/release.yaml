@@ -50,7 +50,7 @@ jobs:
                   "target": "$1"
                 }
               ],
-              "pr_template": "- #{{TITLE}} -- #{{URL}} --- #{{TICKET}}",
+              "pr_template": "- #{{TITLE}} - #{{URL}} #{{TICKET}}",
               "custom_placeholders": [
                 {
                   "name": "TICKET",
@@ -58,7 +58,7 @@ jobs:
                   "transformer": {
                     "pattern": "\\[FRVR-([A-Za-z0-9]+)\\]",
                     "method": "regexr",
-                    "target": "[$1](https://linear.app/frvr/issue/FRVR-$1)"
+                    "target": "- ([Linear FRVR-$1](https://linear.app/frvr/issue/FRVR-$1))"
                   }
                 }
               ]
