@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Changelog
+      - name: Build changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
           mode: "COMMIT"
@@ -53,7 +53,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create Release
+      - name: Log changelog
+        run: echo "${{steps.github_release.outputs.changelog}}"
+
+      - name: Create release
         uses: mikepenz/action-gh-release@v0.2.0-a03 #softprops/action-gh-release
         with:
           tag_name: ${{ github.event.inputs.version }}
