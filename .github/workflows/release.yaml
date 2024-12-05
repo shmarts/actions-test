@@ -29,15 +29,15 @@ jobs:
           mode: "COMMIT"
           configurationJson: |
             {
-              "template": "#{{CHANGELOG}} asd",
+              "template": "#{{CHANGELOG}}",
               "categories": [
                 {
-                    "title": "## Feature",
-                    "labels": ["feat", "feature"]
+                    "title": "## 🚀 Features",
+                    "labels": ["feat"]
                 },
                 {
-                    "title": "## Fix",
-                    "labels": ["fix", "bug"]
+                    "title": "## ⚙️ Fixes",
+                    "labels": ["fix"]
                 },
                 {
                     "title": "## Other",
@@ -48,6 +48,19 @@ jobs:
                 {
                   "pattern": "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?: ([\\w ])+([\\s\\S]*)",
                   "target": "$1"
+                }
+              ],
+              "pr_template": "- #{{TITLE}}\n   - PR: ##{{NUMBER}}",
+              "pr_template": "- #{{TITLE}} - #{{URL}} #{{TICKET}}",
+              "custom_placeholders": [
+                {
+                  "name": "TICKET",
+                  "source": "TITLE",
+                  "transformer": {
+                    "pattern": "\\[FRVR-.+\\]",
+                    "method": "regexr",
+                    "target": '- [$1](https://linear.app/frvr/issue/$1)'
+                  }
                 }
               ]
             }
