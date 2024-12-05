@@ -58,7 +58,7 @@ jobs:
                   "transformer": {
                     "pattern": "\\s*\\[?FRVR-[A-Za-z0-9]+\\]?\\s*",
                     "method": "replace",
-                    "target": ""
+                    "target": " "
                   }
                 },
                 {
