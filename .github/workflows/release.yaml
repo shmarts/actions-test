@@ -58,7 +58,7 @@ jobs:
                   "transformer": {
                     "pattern": "\\[FRVR-.+\\]",
                     "method": "regexr",
-                    "target": '- [$1](https://linear.app/frvr/issue/$1)'
+                    "target": "- [$1](https://linear.app/frvr/issue/$1)"
                   }
                 }
               ]
