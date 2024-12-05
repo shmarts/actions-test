@@ -17,11 +17,11 @@ jobs:
       - name: Create and Push Git Tag
         run: |
           git fetch origin
-          git tag ${{ github.event.inputs.tag_name }}
-          git push origin ${{ github.event.inputs.tag_name }}
+          git tag ${{ github.event.inputs.version }}
+          git push origin ${{ github.event.inputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Build Changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
