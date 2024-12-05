@@ -26,7 +26,7 @@ jobs:
         id: changelog
         uses: mikepenz/release-changelog-builder-action@v5
         with:
-          mode: "PR"
+          mode: "HYBRID"
           configurationJson: |
             {
               "template": "#{{CHANGELOG}}",
@@ -50,15 +50,15 @@ jobs:
                   "target": "$1"
                 }
               ],
-              "pr_template": "- #{{TITLE}} - #{{URL}} #{{TICKET}}",
+              "pr_template": "- #{{TITLE}} -- #{{URL}} --- #{{TICKET}}",
               "custom_placeholders": [
                 {
                   "name": "TICKET",
                   "source": "TITLE",
                   "transformer": {
-                    "pattern": "\\[FRVR-.+\\]",
+                    "pattern": "\\[FRVR-([A-Za-z0-9]+)\\]",
                     "method": "regexr",
-                    "target": "- [$1](https://linear.app/frvr/issue/$1)"
+                    "target": "[$1](https://linear.app/frvr/issue/FRVR-$1)"
                   }
                 }
               ]
