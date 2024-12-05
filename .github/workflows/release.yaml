@@ -50,14 +50,14 @@ jobs:
                   "target": "$1"
                 }
               ],
-              "pr_template": "- #{{CLEAN_TITLE}} - #{{URL}} #{{TICKET}}",
+              "pr_template": "- #{{CLEAN_TITLE}} #{{TICKET}}",
               "custom_placeholders": [
                 {
                   "name": "CLEAN_TITLE",
                   "source": "TITLE",
                   "transformer": {
                     "pattern": "\\s*\\[?FRVR-[A-Za-z0-9]+\\]?\\s*",
-                    "method": "regexr",
+                    "method": "replace",
                     "target": ""
                   }
                 },
