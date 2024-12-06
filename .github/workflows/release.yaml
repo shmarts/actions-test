@@ -32,49 +32,49 @@ jobs:
               "fetchViaCommits": true,
               "template": "#{{CHANGELOG}}",
               "categories": [
-                {
-                  "title": "## 🚀 Features",
-                  "labels": ["feat"]
-                },
-                {
-                  "title": "## ⚙️ Fixes",
-                  "labels": ["fix"]
-                },
-                {
-                  "title": "## Other",
-                  "labels": []
-                }
+              {
+                "title": "## 🚀 Features",
+                "labels": ["feat"]
+              },
+              {
+                "title": "## ⚙️ Fixes",
+                "labels": ["fix"]
+              },
+              {
+                "title": "## Other",
+                "labels": []
+              }
               ],
               "label_extractor": [
-                {
-                  "pattern": "^(build|ci|chore|doc|docs|wiki|remove|deprecate|security|dependency|package|feat|feature|fix|bug|perf|optimize|refactor|revert|style|test):(.*)",
-                  "target": "$1"
-                },
-                {
-                  "pattern": "^(build|ci|chore|doc|docs|wiki|remove|deprecate|security|dependency|package|feat|feature|fix|bug|perf|optimize|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?:(.*)",
-                  "target": "$1"
-                }
+              {
+                "pattern": "^(build|ci|chore|doc|docs|wiki|remove|deprecate|security|dependency|package|feat|feature|fix|bug|perf|optimize|refactor|revert|style|test):(.*)",
+                "target": "$1"
+              },
+              {
+                "pattern": "^(build|ci|chore|doc|docs|wiki|remove|deprecate|security|dependency|package|feat|feature|fix|bug|perf|optimize|refactor|revert|style|test){1}(\\([\\w\\-\\.]+\\))?(!)?:(.*)",
+                "target": "$1"
+              }
               ],
-              "pr_template": "- [#{{CLEAN_TITLE}}](https://github.com/#{{OWNER}}/#{{REPO}}/commit/#{{MERGE_SHA}}) #{{TICKET}}",
+              "pr_template": "- #{{CLEAN_TITLE}} #{{TICKET}}",
               "custom_placeholders": [
-                {
-                  "name": "CLEAN_TITLE",
-                  "source": "TITLE",
-                  "transformer": {
-                    "pattern": "\\s*\\[?FRVR-[A-Za-z0-9]+\\]?\\s*",
-                    "method": "replaceAll",
-                    "target": " "
-                  }
-                },
-                {
-                  "name": "TICKET",
-                  "source": "TITLE",
-                  "transformer": {
-                    "pattern": "\\[?FRVR-([A-Za-z0-9]+)\\]?",
-                    "method": "regexr",
-                    "target": "[FRVR-$1](https://linear.app/frvr/issue/FRVR-$1)"
-                  }
+              {
+                "name": "CLEAN_TITLE",
+                "source": "TITLE",
+                "transformer": {
+                "pattern": "\\s*\\[?FRVR-[A-Za-z0-9]+\\]?\\s*",
+                "method": "replaceAll",
+                "target": " "
                 }
+              },
+              {
+                "name": "TICKET",
+                "source": "TITLE",
+                "transformer": {
+                "pattern": "\\[?FRVR-([A-Za-z0-9]+)\\]?",
+                "method": "regexr",
+                "target": "[FRVR-$1](https://linear.app/frvr/issue/FRVR-$1)"
+                }
+              }
               ]
             }
         env:
