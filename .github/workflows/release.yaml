@@ -55,7 +55,7 @@ jobs:
                   "target": "$1"
                 }
               ],
-              "pr_template": "- [#{{CLEAN_TITLE}}](https://github.com/${{OWNER}}/${{REPO}}/commit/#{{MERGE_SHA}}) #{{TICKET}}",
+              "pr_template": "- [#{{CLEAN_TITLE}}](https://github.com/#{{OWNER}}/#{{REPO}}/commit/#{{MERGE_SHA}}) #{{TICKET}}",
               "custom_placeholders": [
                 {
                   "name": "CLEAN_TITLE",
