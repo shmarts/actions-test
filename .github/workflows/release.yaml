@@ -72,7 +72,7 @@ jobs:
                 "transformer": {
                 "pattern": "\\[?FRVR-([A-Za-z0-9]+)\\]?",
                 "method": "regexr",
-                "target": "[FRVR-$1](https://linear.app/frvr/issue/FRVR-$1)"
+                "target": "- [FRVR-$1](https://linear.app/frvr/issue/FRVR-$1)"
                 }
               }
               ]
